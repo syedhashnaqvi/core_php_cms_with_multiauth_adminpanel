@@ -6,9 +6,13 @@ An open source content management system build using core php to kick start any 
 git clone https://github.com/syedhashnaqvi/core_php_cms_with_multiauth_adminpanel.git
 
 
+## Helper Functions
+-> dd()
+   to dump and die any object or variable
+
 
 ## Admin Template
-we have use open source templated called [***AdminLte***] (https://github.com/ColorlibHQ/AdminLTE)
+[***AdminLte***](https://github.com/ColorlibHQ/AdminLTE)
 
 ## Rendering Views
-we used [***Xeoncross PHP Template***](http://github.com/Xeoncross/php-template)
+[***Xeoncross PHP Template***](http://github.com/Xeoncross/php-template)
