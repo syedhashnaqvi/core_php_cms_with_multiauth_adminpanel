@@ -21,7 +21,7 @@ class SiteController{
         if($auth) {
             redirect('/admin');
         }else{
-            Sessions::session()->create_session('flash_message',true,['type'=>'danger','msg'=>'LOGIN ATTEMPT FAILED <br> Please check user name and password!']);
+            Sessions::set('flash_message',true,['type'=>'danger','msg'=>'LOGIN ATTEMPT FAILED <br> Please check user name and password!']);
             redirect('/admin');
         }
 

@@ -26,7 +26,7 @@ class AdminController{
         if($auth) {
             redirect('/admin');
         }else{
-            Sessions::session()->create_session('flash_message',true,['type'=>'danger','msg'=>'LOGIN ATTEMPT FAILED <br> Please check user name and password!']);
+            Sessions::set('flash_message',true,['type'=>'danger','msg'=>'LOGIN ATTEMPT FAILED <br> Please check user name and password!']);
             redirect('/admin');
         }
 
@@ -34,7 +34,7 @@ class AdminController{
 
     public function logout()
     {
-        Sessions::session()->remove_session('admin');
+        Sessions::destroy('admin');
         redirect('/admin');
     }
 

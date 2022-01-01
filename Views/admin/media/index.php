@@ -43,7 +43,7 @@
         <div class="col-12 col-sm-12 col-md-8 offset-md-2">
           <?php 
         use root\Sessions; 
-        Sessions::session()->flash_message(); 
+        Sessions::flash_message(); 
         ?>
         </div>
       </div>

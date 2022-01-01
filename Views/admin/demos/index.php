@@ -27,7 +27,7 @@
         <div class="col-12 col-sm-12 col-md-8 offset-md-2">
         <?php 
         use root\Sessions; 
-        Sessions::session()->flash_message(); 
+        Sessions::flash_message(); 
         ?>
         </div>
       </div>
@@ -56,15 +56,15 @@
                   <?php foreach ($demos as $key => $demo){?>
                   <tr>
                     <td><?php echo $key+1?></td>
-                    <td><?php echo $demo['title']?></td>
-                    <td><?php echo $demo['slug']?></td>
-                    <td><?php echo $demo['description']?></td>
-                    <td><?php echo $demo['imageurl']?></td>
+                    <td><?php echo $demo->title ?></td>
+                    <td><?php echo $demo->slug ?></td>
+                    <td><?php echo $demo->description ?></td>
+                    <td><?php echo $demo->imageurl ?></td>
                     <td>
                       <div class="btn-group">
-                        <a href="<?php route('/admin/demos/edit/'.$demo['id']) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                        <a href="<?php route('/admin/demos/edit/'.$demo->id) ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
                       <form action="/admin/demos/destroy" method="POST">
-                        <input type="hidden" name="id" value="<?php echo $demo['id'];?>">
+                        <input type="hidden" name="id" value="<?php echo $demo->id;?>">
                         <input type="hidden" name="csrf" value="<?php echo $request->csrf; ?>">
                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                       </form>

@@ -11,7 +11,7 @@ class DemoController{
     }
     
     public function index($request){
-        $demos = DB::getInstance()->getAll('demo');
+        $demos = DB::table('demo')->select()->get();
         $template = new Template('admin/demos/index');
         $template->title('Admin - Demo');
         $template->demos($demos);
@@ -30,20 +30,20 @@ class DemoController{
     public function store($request){
         $data = $request->getBody();
         unset($data['csrf']);
-        $demos = DB::getInstance()->store($data,'demo');
+        $demos = DB::table('demo')->insert($data);
         $message ='';
         if($demos>0){
             $message = ['type'=>'success','msg'=>'Demo created successfully!'];
         }else{
             $message = ['type'=>'danger','msg'=>'Something went wrong!'];
         }
-        Sessions::session()->create_session('flash_message',true,$message);
+        Sessions::set('flash_message',true,$message);
         redirect('/admin/demos');
     }
 
     public function edit($request)
     {
-        $demo = DB::getInstance()->findById($request->params->id,'demo');
+        $demo = DB::table('demo')->select()->where(['id'=>$request->params->id])->first();
         $template = new Template('admin/demos/edit');
         $template->title('Admin - Demo/Edit');
         $template->demo($demo);
@@ -67,21 +67,21 @@ class DemoController{
         $data = $request->getBody();
         unset($data['csrf']);
         ($has_file) ? $data['imageurl']=$uploadFilePath:'';
-        $demos = DB::getInstance()->update($request->params->id,$data,'demo');
+        $demos = DB::table('demo')->update($data,$request->params->id);
         $message ='';
         if($demos>0){
             $message = ['type'=>'success','msg'=>'Demo updated successfully!'];
         }else{
             $message = ['type'=>'danger','msg'=>'Something went wrong!'];
         }
-        Sessions::session()->create_session('flash_message',true,$message);
+        Sessions::set('flash_message',true,$message);
         redirect('/admin/demos');
     }
 
     public function destroy($request)
     {
         $id = $request->getBody()['id'];
-        $demo = DB::getInstance()->destroy('demo','id',$id);
+        $demo = DB::table('demo')->destroy('id',$id);
         $message ='';
         if($demo>0){
             $message = ['type'=>'success','msg'=>'Demo deleted successfully!'];
@@ -89,7 +89,7 @@ class DemoController{
             $message = ['type'=>'danger','msg'=>'Something went wrong!'];
         }
         
-        Sessions::session()->create_session('flash_message',true,$message);
+        Sessions::set('flash_message',true,$message);
         redirect('/admin/demos');
     }
 

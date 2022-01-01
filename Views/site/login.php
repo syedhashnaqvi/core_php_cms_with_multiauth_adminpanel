@@ -26,7 +26,7 @@
       <p class="login-box-msg">Sign in to start your session</p>
       <?php 
         use root\Sessions; 
-        Sessions::session()->flash_message(); 
+        Sessions::flash_message(); 
         ?>
       <form action="<?php route('/admin/login') ?>" method="post">
       <input type="hidden" name="csrf" value="<?php echo $request->csrf; ?>">

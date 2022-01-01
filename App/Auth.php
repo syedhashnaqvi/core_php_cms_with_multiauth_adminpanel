@@ -9,11 +9,13 @@ class Auth
 
     public static function attemptLogin($auth_email,$auth_password,$table)
     {
-        $user = DB::getInstance()->query('SELECT * FROM '.$table.' WHERE `email`="'.$auth_email.'" AND `password`="'.$auth_password.'" LIMIT 1')->fetchObject();
+        $user = DB::table('users')->select()->where(['email'=>$auth_email,'password'=>$auth_password])->get();
         if((array)$user)
         {
             unset($user->password);
-            Sessions::session()->create_session($user->is_admin?'admin':'user',true,$user);
+            Sessions::set($user->is_admin?'admin':'user',true,$user);
+            Sessions::set('urole',true,$user->is_admin?"admin":"user");
+            Sessions::set('uid',true,$user->id);
             return true;
         }else{
             return false;
@@ -22,34 +24,16 @@ class Auth
 
     public static function logout()
     {
-        Sessions::session()->remove_session('admin');
+        Sessions::destroy('admin');
     }
 
-
-    public static function getAdmin($colmnName=''){
-        if($colmnName == '')
-        {
-            return Sessions::session()->get_session_data('admin');
-        }
-        $data = Sessions::session()->get_session_data('admin');
-
-        $data = (array)$data;
-        if($data){
-            __($data[$colmnName]);
-        }
-        return false;
+    public static function uId()
+    {
+        return Sessions::get('uid');
     }
 
-    public static function getUser($colmnName=''){
-        if($colmnName == '')
-        {
-            return Sessions::session()->get_session_data('user');
-        }
-        $data = Sessions::session()->get_session_data('user');
-        $data = (array)$data;
-        if($data){
-            __($data[$colmnName]);
-        }
-        return false;
+    public static function uRole()
+    {
+        return Sessions::get('urole');
     }
 }
