@@ -1,5 +1,5 @@
 <?php
-namespace root;
+namespace Core;
 class Sessions {
 
     private static $instance;
@@ -51,7 +51,7 @@ class Sessions {
     public static function flash_message(){
         self::init();
         if(self::exist('flash_message')  ){
-            $data = self::get_session_data('flash_message');
+            $data = self::get('flash_message');
             echo '<div class="alert alert-'.$data['type'].'" role="alert">
                     '.$data['msg'].'
                 </div>';

@@ -1,7 +1,7 @@
 <?php
 namespace App\Admin;
-use root\DB;
-use root\Sessions;
+use Core\DB;
+use Core\Sessions;
 use App\Auth;
 use Template;
 

@@ -25,7 +25,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
       <?php 
-        use root\Sessions; 
+        use Core\Sessions; 
         Sessions::flash_message(); 
         ?>
       <form action="<?php route('/admin/login') ?>" method="post">

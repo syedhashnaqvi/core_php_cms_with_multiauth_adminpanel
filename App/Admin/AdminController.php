@@ -1,8 +1,8 @@
 <?php
 namespace App\Admin;
 include_once 'Request.php';
-use root\DB;
-use root\Sessions;
+use Core\DB;
+use Core\Sessions;
 use App\Auth;
 use Template;
 

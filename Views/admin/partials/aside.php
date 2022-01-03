@@ -15,7 +15,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">Admin<br>
-            <?php Auth::getAdmin('email') ?></a>
+            <?php __(Auth::user()->email); ?></a>
         </div>
       </div>
 

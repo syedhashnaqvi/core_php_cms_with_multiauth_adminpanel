@@ -1,7 +1,8 @@
 <?php
 namespace App\Site;
 include_once 'Request.php';
-use root\DB;
+use Core\DB;
+use Core\Hash;
 use Template;
 
 class SiteController{

@@ -1,5 +1,5 @@
 <?php
-namespace root;
+namespace Core;
 /*Change config values in App/config.php file
 Config loader Class*/
 

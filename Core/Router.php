@@ -1,7 +1,7 @@
 <?php
 
-use root\Sessions;
-use root\Config;
+use Core\Sessions;
+use Core\Config;
 class Router
 {
   private $request,$routes,$params;

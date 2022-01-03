@@ -1,5 +1,5 @@
 <?php
-use root\Config;
+use Core\Config;
 // dump variable and die
 function dd($variable){
     echo '<pre style="background:#000; color:#00FF00">';

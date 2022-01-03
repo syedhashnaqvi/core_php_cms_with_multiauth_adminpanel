@@ -4,12 +4,12 @@
  * @category   Database MYSQL
  * @package    HashPhp
  * @author     Hashmat Ali
- * @copyright  2021 Hash
+ * @copyright  2022 Hash
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    1.0
  */
-namespace root;
-use root\Config;
+namespace Core;
+use Core\Config;
 use mysqli;
 class DB{
     private static $instance;
