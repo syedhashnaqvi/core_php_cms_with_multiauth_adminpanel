@@ -9,6 +9,7 @@ require('Core'.DS.'Sessions.php');
 require('Core'.DS.'Validator.php');
 require('Helpers'.DS.'helper.php');
 require('Core'.DS.'Template.php');
+require('Core'.DS.'IRequest.php');
 require('Core'.DS.'Request.php');
 require('Core'.DS.'Router.php');
 require('Core'.DS.'DB.php');

@@ -81,23 +81,23 @@
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-3">
-                  <p class="text-bold">Detials</p>
+                  <p class="text-bold"></p>
                   <table class="w-100">
                     <tr>
                       <td>File Name</td>
-                      <td>Abc</td>
+                      <td id="file_name"></td>
                     </tr>
                     <tr>
                       <td>File Format</td>
-                      <td>.jpg</td>
+                      <td id="file_ext"></td>
                     </tr>
                     <tr>
                       <td>File Size</td>
-                      <td>152 KB</td>
+                      <td id="file_size"></td>
                     </tr>
                     <tr>
-                      <td>Modified Date</td>
-                      <td>12:56:33 03/01/2022</td>
+                      <td>Resolution</td>
+                      <td id="file_resolution"></td>
                     </tr>
                   </table>
                 </div>
@@ -175,6 +175,14 @@
   });
 
   $(".media-img").on("click", function () {
+    var img = new Image();
+    img.src = $(this).attr("src");
+    var filename = img.src.substring(img.src.lastIndexOf('/')+1);
+    var extension = filename.substring(filename.lastIndexOf('.'));
+    $("#file_size").html((parseInt(fetchHeader($(this).attr("src"),'Content-Length'))/1024).toFixed(1)+" KB");
+    $("#file_resolution").html(img.width+" X "+img.height);
+    $("#file_ext").html(extension);
+    $("#file_name").html(filename);
     $(".media-img").each(function (i, obj) {
       $(this).removeClass("media_thumb_selected");
     });
@@ -202,6 +210,20 @@
     navigator.clipboard.writeText(copyText.value);
     alert("Copied the text: " + copyText.value);
   }
+
+  function fetchHeader(url, wch) {
+    try {
+        var req=new XMLHttpRequest();
+        req.open("HEAD", url, false);
+        req.send(null);
+        if(req.status== 200){
+            return req.getResponseHeader(wch);
+        }
+        else return false;
+    } catch(er) {
+        return er.message;
+    }
+}
 </script>
 <script src="<?php asset('admin/js/media.js')?>"></script>
 <?php $this->end('footer.javascript'); ?>

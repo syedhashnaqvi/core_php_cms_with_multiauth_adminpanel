@@ -1,5 +1,4 @@
 <?php
-include_once 'IRequest.php';
 class Request implements IRequest
 {
   function __construct()
