@@ -6,6 +6,7 @@ const DS = DIRECTORY_SEPARATOR;
 
 require('Core'.DS.'Config.php');
 require('Core'.DS.'Sessions.php');
+require('Core'.DS.'Validator.php');
 require('Helpers'.DS.'helper.php');
 require('Core'.DS.'Template.php');
 require('Core'.DS.'Request.php');

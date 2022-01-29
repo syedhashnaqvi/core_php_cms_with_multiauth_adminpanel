@@ -21,3 +21,22 @@
   top:3px; 
   left:48%; 
 }
+
+.media-menu{
+  border: 1px solid gray;
+  border-left: unset;
+  border-right: unset;
+}
+
+.media-menu ul {
+  list-style: none;
+  padding-bottom: 2px;
+}
+.media-menu ul li {
+  display: inline-block;
+  font-size: 25px;
+}
+
+.media_thumb_selected{
+  border: 2px solid #88c1f4;
+}

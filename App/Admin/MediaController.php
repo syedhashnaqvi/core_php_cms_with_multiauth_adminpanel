@@ -2,6 +2,7 @@
 namespace App\Admin;
 use Core\DB;
 use Core\Sessions;
+use Core\Config;
 use App\Auth;
 use Template;
 
@@ -28,7 +29,7 @@ class MediaController{
         $has_file = false;
         $uploadFilePath = '';
         if(count($files)>0){
-            $uploadFilePath = uploadFile(MEDIA_PATH,$files,'mediafiles');
+            $uploadFilePath = uploadFile(Config::get('media_path'),$files,'mediafiles');
             if($uploadFilePath['uploadpath']){
                 $has_file = true;
                 $uploadFilePath = $uploadFilePath['uploadpath'];

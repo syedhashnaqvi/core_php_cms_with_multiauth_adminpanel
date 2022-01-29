@@ -37,7 +37,7 @@ class DemoController{
         }else{
             $message = ['type'=>'danger','msg'=>'Something went wrong!'];
         }
-        Sessions::set('flash_message',true,$message);
+        Sessions::set('flash_message',$message,true);
         redirect('/admin/demos');
     }
 
@@ -74,7 +74,7 @@ class DemoController{
         }else{
             $message = ['type'=>'danger','msg'=>'Something went wrong!'];
         }
-        Sessions::set('flash_message',true,$message);
+        Sessions::set('flash_message',$message,true);
         redirect('/admin/demos');
     }
 
@@ -89,7 +89,7 @@ class DemoController{
             $message = ['type'=>'danger','msg'=>'Something went wrong!'];
         }
         
-        Sessions::set('flash_message',true,$message);
+        Sessions::set('flash_message',$message,true);
         redirect('/admin/demos');
     }
 

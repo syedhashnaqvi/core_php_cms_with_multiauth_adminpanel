@@ -112,7 +112,7 @@ class Router
     
     if(!Sessions::get('csrf') || time() > Sessions::get('csrf')['expiry']){
       $csrf = generateRandomString(20);
-      Sessions::set('csrf',true,['csrf'=>$csrf,'expiry'=>time()+20]);
+      Sessions::set('csrf',['csrf'=>$csrf,'expiry'=>time()+60],true);
     }
     $this->request->csrf = Sessions::get('csrf')['csrf'];
     $this->request->params = $this->params;
@@ -136,7 +136,7 @@ class Router
     if(count($classmethod)<2){
       throw new ErrorException("Invalid Route Method");
     }
-    include($this->setDS($classmethod[0]).".php");
+    include($this->setDS(basePath().$classmethod[0]).".php");
     $object = new $classmethod[0];
     $method = $classmethod[1];
     return [$object,$method];

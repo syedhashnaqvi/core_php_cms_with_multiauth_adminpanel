@@ -21,7 +21,7 @@ class Sessions {
         return isset($_SESSION[$session_name]);
     }
     
-    public static function set( $session_name , $force = false ,$data){
+    public static function set( $session_name, $data, $force = false){
         self::init();
         if( !self::exist($session_name) || $force ){
             $_SESSION[$session_name] = $data;          

@@ -6,7 +6,7 @@ Config loader Class*/
 class Config {
     public static function get($keys)
     {
-        $configs = require('App'.DS.'config'.DS.'config.php');
+        $configs = require(basePath().'App'.DS.'config'.DS.'config.php');
         $configs = json_decode(json_encode($configs));
         $keys = explode(".",$keys);
         foreach($keys as $key){

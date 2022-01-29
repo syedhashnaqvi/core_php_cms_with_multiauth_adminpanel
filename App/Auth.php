@@ -13,13 +13,11 @@ class Auth
         $user = DB::table('users')->select()->where(['email'=>$auth_email])->get();
         if((array)$user)
         {
-            if(!Hash::verifyHash($auth_password,$user->password)){
-                return false;
-            }
+            if(!Hash::verifyHash($auth_password,$user->password)){return false;}
             unset($user->password);
-            Sessions::set($user->is_admin?'admin':'user',true,$user);
-            Sessions::set('urole',true,$user->is_admin?"admin":"user");
-            Sessions::set('uid',true,$user->id);
+            Sessions::set($user->is_admin?'admin':'user',$user,true);
+            Sessions::set('urole',$user->is_admin?"admin":"user",true);
+            Sessions::set('uid',$user->id,true);
             return true;
         }else{
             return false;

@@ -86,7 +86,7 @@ class Template
 	{
         ob_start();
 		extract((array) $this);
-		require self::$path . $__f . '.php';
+		require basePath().self::$path . $__f . '.php';
 		return ob_get_clean();
 	}
 

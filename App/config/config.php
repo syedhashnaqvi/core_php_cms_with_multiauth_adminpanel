@@ -1,7 +1,7 @@
 <?php
 return [
     'base_url'=>'',
-    'media_path'=>'/Media/',
+    'media_path'=>'/media//',
     'db'=>[
         'host'=>'localhost:3306',
         'db'=>'phpcms',

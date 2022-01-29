@@ -26,7 +26,7 @@ class AdminController{
         if($auth) {
             redirect('/admin');
         }else{
-            Sessions::set('flash_message',true,['type'=>'danger','msg'=>'LOGIN ATTEMPT FAILED <br> Please check user name and password!']);
+            Sessions::set('flash_message',['type'=>'danger','msg'=>'LOGIN ATTEMPT FAILED <br> Please check user name and password!'],true);
             redirect('/admin');
         }
 
