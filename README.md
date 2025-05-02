@@ -39,6 +39,10 @@ ___($var);
 // echo given variable
 __($var);
 
+
+
+
+
 // creates a random string of given length
 generateRandomString($length)
 
